@@ -2,6 +2,7 @@ package com.leonardoalvarenga.nexcash.controller;
 
 import com.leonardoalvarenga.nexcash.domain.Expense;
 import com.leonardoalvarenga.nexcash.service.ExpenseService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +18,7 @@ public class ExpenseController {
     private final ExpenseService service;
 
     @PostMapping
-    public ResponseEntity<Expense> create(@RequestBody  Expense expense){
+    public ResponseEntity<Expense> create(@Valid @RequestBody  Expense expense){
         Expense savedExpense = service.createExpense(expense);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedExpense);
     }
