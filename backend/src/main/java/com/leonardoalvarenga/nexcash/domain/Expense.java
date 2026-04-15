@@ -27,16 +27,17 @@ public class Expense {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    @NotBlank
+    @NotBlank(message = "Description cannot be empty")
     private String description;
 
-    @Positive
+    @NotNull(message = "Price cannot be null")
+    @Positive(message = "Price must be greater than zero")
     private BigDecimal price;
 
-    @PastOrPresent
+    @PastOrPresent(message = "Date cannot be in the future")
     private LocalDateTime date;
 
-    @NotNull
+    @NotNull(message = "Status cannot be null")
     @Enumerated(EnumType.STRING)
     private ExpenseStatus status;
 }
