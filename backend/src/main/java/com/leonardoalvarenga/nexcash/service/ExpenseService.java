@@ -1,9 +1,12 @@
 package com.leonardoalvarenga.nexcash.service;
 
 import com.leonardoalvarenga.nexcash.domain.Expense;
+import com.leonardoalvarenga.nexcash.dto.ExpenseResponseDTO;
 import com.leonardoalvarenga.nexcash.repository.ExpenseRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -12,5 +15,17 @@ public class ExpenseService {
 
     public Expense createExpense(Expense expense){
         return repository.save(expense);
+    }
+
+    public List<ExpenseResponseDTO> findAll(){
+        return repository.findAll()
+                .stream()
+                .map(expense -> new ExpenseResponseDTO(
+                        expense.getId(),
+                        expense.getDescription(),
+                        expense.getPrice(),
+                        expense.getStatus()
+                ))
+                .toList();
     }
 }
