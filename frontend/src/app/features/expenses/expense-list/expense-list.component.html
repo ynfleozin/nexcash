@@ -7,6 +7,27 @@
     <button class="btn-primary" (click)="openModal()">+ New Expense</button>
   </header>
 
+  <section class="dashboard-grid">
+    <div class="stat-card">
+      <span class="stat-label">Total Volume</span>
+      <h2 class="stat-value">{{ totalAmount() | currency: "USD" }}</h2>
+    </div>
+
+    <div class="stat-card">
+      <span class="stat-label">Approved</span>
+      <h2 class="stat-value text-success">
+        {{ totalApproved() | currency: "USD" }}
+      </h2>
+    </div>
+
+    <div class="stat-card">
+      <span class="stat-label">Pending Review</span>
+      <h2 class="stat-value text-warning">
+        {{ totalPending() | currency: "USD" }}
+      </h2>
+    </div>
+  </section>
+
   <div class="table-card">
     <table class="data-table">
       <thead>
@@ -19,7 +40,7 @@
       </thead>
 
       <tbody>
-        @for (expense of expenses; track expense.id) {
+        @for (expense of expenses(); track expense.id) {
           <tr>
             <td>
               <span class="font-medium">{{ expense.description }}</span>
