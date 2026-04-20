@@ -1,1 +1,43 @@
-<p>expense-form works!</p>
+<div class="modal-overlay" (click)="close.emit()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <header class="modal-header">
+      <h2>New Expense</h2>
+      <button class="btn-close" (click)="close.emit()">&times;</button>
+    </header>
+
+    <form [formGroup]="expenseForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label>Description</label>
+        <input
+          type="text"
+          formControlName="description"
+          placeholder="Ex: Uber to client"
+        />
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Amount (USD)</label>
+          <input type="number" formControlName="price" placeholder="0.00" />
+        </div>
+        <div class="form-group">
+          <label>Date</label>
+          <input type="datetime-local" formControlName="date" />
+        </div>
+      </div>
+
+      <footer class="modal-footer">
+        <button type="button" class="btn-secondary" (click)="close.emit()">
+          Cancel
+        </button>
+        <button
+          type="submit"
+          class="btn-primary"
+          [disabled]="expenseForm.invalid"
+        >
+          Save Expense
+        </button>
+      </footer>
+    </form>
+  </div>
+</div>

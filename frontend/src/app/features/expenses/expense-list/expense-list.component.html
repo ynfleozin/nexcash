@@ -4,7 +4,7 @@
       <h1 class="page-title">Corporate Expenses</h1>
       <p class="page-subtitle">Manage and track all company reimbursements.</p>
     </div>
-    <button class="btn-primary">+ New Expense</button>
+    <button class="btn-primary" (click)="openModal()">+ New Expense</button>
   </header>
 
   <div class="table-card">
@@ -49,3 +49,7 @@
     </table>
   </div>
 </div>
+@if (isModalOpen) {
+  <app-expense-form (close)="closeModal()" (saved)="loadExpenses()">
+  </app-expense-form>
+}

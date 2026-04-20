@@ -14,4 +14,8 @@ export class ExpenseService {
   getExpenses(): Observable<Expense[]> {
     return this.http.get<Expense[]>(this.apiUrl);
   }
+
+  createExpense(expense: Partial<Expense>): Observable<Expense> {
+    return this.http.post<Expense>(this.apiUrl, expense);
+  }
 }
