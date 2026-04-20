@@ -49,6 +49,14 @@
     padding: 1rem 1.5rem;
     border-bottom: 1px solid var(--border-color);
     vertical-align: middle;
+
+    .text-danger {
+      color: var(--status-rejected) !important;
+
+      &:hover {
+        color: #f87171 !important;
+      }
+    }
   }
 
   tbody tr:hover {

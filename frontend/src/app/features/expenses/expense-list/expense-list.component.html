@@ -37,7 +37,15 @@
             </td>
 
             <td class="text-right">
-              <button class="btn-ghost">Review</button>
+              <button class="btn-ghost" style="margin-right: 1rem">
+                Review
+              </button>
+              <button
+                class="btn-ghost text-danger"
+                (click)="onDelete(expense.id)"
+              >
+                Delete
+              </button>
             </td>
           </tr>
         } @empty {
