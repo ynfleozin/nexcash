@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/expenses")
@@ -27,5 +28,11 @@ public class ExpenseController {
     public ResponseEntity<List<ExpenseResponseDTO>> get(){
         List<ExpenseResponseDTO> expensesList = service.findAll();
         return ResponseEntity.status(HttpStatus.OK).body(expensesList);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable UUID id) {
+        service.deleteExpense(id);
+        return ResponseEntity.noContent().build();
     }
 }

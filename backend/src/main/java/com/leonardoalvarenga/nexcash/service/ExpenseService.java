@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -27,5 +28,9 @@ public class ExpenseService {
                         expense.getStatus()
                 ))
                 .toList();
+    }
+
+    public void deleteExpense(UUID id) {
+        repository.deleteById(id);
     }
 }
