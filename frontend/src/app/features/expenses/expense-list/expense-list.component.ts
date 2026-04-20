@@ -3,6 +3,7 @@ import { Expense } from '../../../core/services/expense.model';
 import { CommonModule } from '@angular/common';
 import { ExpenseService } from '../../../core/services/expense.service';
 import { ExpenseFormComponent } from '../expense-form/expense-form.component';
+import { ToastService } from '../../../core/services/toast.service';
 
 @Component({
   selector: 'app-expense-list',
@@ -16,6 +17,7 @@ export class ExpenseListComponent {
   isModalOpen = false;
 
   private expenseService = inject(ExpenseService);
+  private toastService = inject(ToastService);
 
   ngOnInit(): void {
     this.loadExpenses();
@@ -33,6 +35,7 @@ export class ExpenseListComponent {
       this.expenseService.deleteExpense(id).subscribe({
         next: () => {
           this.expenses = this.expenses.filter((expense) => expense.id != id);
+          this.toastService.show('Expense deleted successfully!', 'success');
         },
         error: (err) => console.error('Error deleting expense', err),
       });

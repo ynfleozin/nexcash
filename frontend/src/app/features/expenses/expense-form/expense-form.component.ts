@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { ExpenseService } from '../../../core/services/expense.service';
 import { Expense } from '../../../core/services/expense.model';
+import { ToastService } from '../../../core/services/toast.service';
 
 @Component({
   selector: 'app-expense-form',
@@ -17,6 +18,7 @@ export class ExpenseFormComponent {
 
   private fb = inject(FormBuilder);
   private expenseService = inject(ExpenseService);
+  private toastService = inject(ToastService);
 
   expenseForm = this.fb.group({
     description: ['', [Validators.required]],
@@ -43,6 +45,7 @@ export class ExpenseFormComponent {
         next: () => {
           this.saved.emit();
           this.close.emit();
+          this.toastService.show('Expense created successfully!', 'success');
         },
         error: (err) => console.error('Error saving expense:', err),
       });
