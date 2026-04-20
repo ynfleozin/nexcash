@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Expense } from '../../../core/services/expense.model';
 import { CommonModule } from '@angular/common';
+import { ExpenseService } from '../../../core/services/expense.service';
 
 @Component({
   selector: 'app-expense-list',
@@ -10,19 +11,18 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./expense-list.component.scss'],
 })
 export class ExpenseListComponent {
-  expenses: Expense[] = [
-    {
-      id: '1',
-      description: 'Uber to Airport',
-      price: 45.5,
-      status: 'APPROVED',
-    },
-    { id: '2', description: 'Team Lunch', price: 120.0, status: 'PENDING' },
-    {
-      id: '3',
-      description: 'Software License',
-      price: 299.99,
-      status: 'REJECTED',
-    },
-  ];
+  expenses: Expense[] = [];
+
+  private expenseService = inject(ExpenseService);
+
+  ngOnInit(): void {
+    this.expenseService.getExpenses().subscribe({
+      next: (data) => {
+        this.expenses = data;
+      },
+      error: (err) => {
+        console.error('Erro ao buscar as despesas da API', err);
+      },
+    });
+  }
 }
