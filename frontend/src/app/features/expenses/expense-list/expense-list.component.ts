@@ -18,7 +18,7 @@ export class ExpenseListComponent {
   private expenseService = inject(ExpenseService);
 
   ngOnInit(): void {
-    this.loadExpenses;
+    this.loadExpenses();
   }
 
   loadExpenses() {
