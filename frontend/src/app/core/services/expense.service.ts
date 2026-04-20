@@ -18,4 +18,8 @@ export class ExpenseService {
   createExpense(expense: Partial<Expense>): Observable<Expense> {
     return this.http.post<Expense>(this.apiUrl, expense);
   }
+
+  deleteExpense(id: string): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  }
 }
