@@ -1,1 +1,51 @@
-<p>expense-list works!</p>
+<div class="expense-container">
+  <header class="page-header">
+    <div>
+      <h1 class="page-title">Corporate Expenses</h1>
+      <p class="page-subtitle">Manage and track all company reimbursements.</p>
+    </div>
+    <button class="btn-primary">+ New Expense</button>
+  </header>
+
+  <div class="table-card">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Description</th>
+          <th>Amount</th>
+          <th>Status</th>
+          <th class="text-right">Actions</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        @for (expense of expenses; track expense.id) {
+          <tr>
+            <td>
+              <span class="font-medium">{{ expense.description }}</span>
+            </td>
+
+            <td>{{ expense.price | currency: "USD" }}</td>
+
+            <td>
+              <span
+                class="status-badge"
+                [ngClass]="expense.status.toLowerCase()"
+              >
+                {{ expense.status | titlecase }}
+              </span>
+            </td>
+
+            <td class="text-right">
+              <button class="btn-ghost">Review</button>
+            </td>
+          </tr>
+        } @empty {
+          <tr>
+            <td colspan="4" class="empty-state">No expenses found.</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>
