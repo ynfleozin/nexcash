@@ -4,9 +4,16 @@
   <nav class="top-nav">
     <div class="nav-brand">NexCash</div>
     <div class="nav-links">
-      <a routerLink="/user" routerLinkActive="active-link">User Portal</a>
-      <a routerLink="/manager" routerLinkActive="active-link"
-        >Manager Dashboard</a
+      @if (authService.currentUserRole() === "USER") {
+        <a routerLink="/user">User Portal</a>
+      }
+
+      @if (authService.currentUserRole() === "MANAGER") {
+        <a routerLink="/manager">Manager Dashboard</a>
+      }
+
+      <a href="javascript:void(0)" (click)="logout()" class="logout-link"
+        >Logout</a
       >
     </div>
   </nav>

@@ -13,6 +13,8 @@ export const authGuard: CanActivateFn = (route, state) => {
   if (!authService.isAuthenticated() || !authService.hasRole(expectedRole)) {
     toastService.show('Acess denied. Please log in.', 'error');
 
+    authService.logout();
+
     router.navigate(['/']);
     return false;
   }

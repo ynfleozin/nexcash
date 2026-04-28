@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { ToastComponent } from './shared/toast/toast.component';
 import { AuthService } from './core/services/auth.service';
 
@@ -12,4 +12,10 @@ import { AuthService } from './core/services/auth.service';
 })
 export class AppComponent {
   authService = inject(AuthService);
+  private router = inject(Router);
+
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['/']);
+  }
 }
