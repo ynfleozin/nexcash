@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { ToastComponent } from './shared/toast/toast.component';
+import { AuthService } from './core/services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -10,4 +11,5 @@ import { ToastComponent } from './shared/toast/toast.component';
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
+  authService = inject(AuthService);
 }

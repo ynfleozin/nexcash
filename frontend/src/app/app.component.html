@@ -1,13 +1,17 @@
 <app-toast></app-toast>
 
-    <nav class="top-nav">
-      <div class="nav-brand">NexCash</div>
-      <div class="nav-links">
-        <a routerLink="/user" routerLinkActive="active-link">User Portal</a>
-        <a routerLink="/manager" routerLinkActive="active-link">Manager Dashboard</a>
-      </div>
-    </nav>
+@if (authService.isAuthenticated()) {
+  <nav class="top-nav">
+    <div class="nav-brand">NexCash</div>
+    <div class="nav-links">
+      <a routerLink="/user" routerLinkActive="active-link">User Portal</a>
+      <a routerLink="/manager" routerLinkActive="active-link"
+        >Manager Dashboard</a
+      >
+    </div>
+  </nav>
+}
 
-    <main>
-      <router-outlet></router-outlet>
-    </main>
+<main>
+  <router-outlet></router-outlet>
+</main>
