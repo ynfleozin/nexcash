@@ -22,4 +22,8 @@ export class ExpenseService {
   deleteExpense(id: string): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
+
+  updateStatus(id: string, status: 'APPROVED' | 'REJECTED'): Observable<Expense> {
+    return this.http.patch<Expense>(`${this.apiUrl}/${id}/status`, `"${status}"`)
+  }
 }

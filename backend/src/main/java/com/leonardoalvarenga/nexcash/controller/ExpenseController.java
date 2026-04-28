@@ -1,6 +1,7 @@
 package com.leonardoalvarenga.nexcash.controller;
 
 import com.leonardoalvarenga.nexcash.domain.Expense;
+import com.leonardoalvarenga.nexcash.domain.enums.ExpenseStatus;
 import com.leonardoalvarenga.nexcash.dto.ExpenseResponseDTO;
 import com.leonardoalvarenga.nexcash.service.ExpenseService;
 import jakarta.validation.Valid;
@@ -19,13 +20,13 @@ public class ExpenseController {
     private final ExpenseService service;
 
     @PostMapping
-    public ResponseEntity<Expense> create(@Valid @RequestBody  Expense expense){
+    public ResponseEntity<Expense> create(@Valid @RequestBody Expense expense) {
         Expense savedExpense = service.createExpense(expense);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedExpense);
     }
 
     @GetMapping
-    public ResponseEntity<List<ExpenseResponseDTO>> get(){
+    public ResponseEntity<List<ExpenseResponseDTO>> get() {
         List<ExpenseResponseDTO> expensesList = service.findAll();
         return ResponseEntity.status(HttpStatus.OK).body(expensesList);
     }
@@ -34,5 +35,12 @@ public class ExpenseController {
     public ResponseEntity<Void> delete(@PathVariable UUID id) {
         service.deleteExpense(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @PatchMapping("/{id}/status")
+    public ResponseEntity<Expense> updateStatus(@PathVariable UUID id, @RequestBody String status) {
+        ExpenseStatus newStatus = ExpenseStatus.valueOf(status.replace("\"", ""));
+        Expense saved = service.updateStatus(id, newStatus);
+        return ResponseEntity.ok(saved);
     }
 }

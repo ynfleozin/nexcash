@@ -1,4 +1,11 @@
-import { Component, computed, inject, OnInit, signal } from '@angular/core';
+import {
+  Component,
+  computed,
+  inject,
+  Input,
+  OnInit,
+  signal,
+} from '@angular/core';
 import { Expense } from '../../../core/services/expense.model';
 import { CommonModule } from '@angular/common';
 import { ExpenseService } from '../../../core/services/expense.service';
@@ -13,6 +20,8 @@ import { ToastService } from '../../../core/services/toast.service';
   styleUrls: ['./expense-list.component.scss'],
 })
 export class ExpenseListComponent implements OnInit {
+  @Input() role: 'USER' | 'MANAGER' = 'USER';
+
   expenses = signal<Expense[]>([]);
 
   isModalOpen = false;
@@ -55,6 +64,20 @@ export class ExpenseListComponent implements OnInit {
         },
       });
     }
+  }
+
+  updateStatus(id: string, newStatus: 'APPROVED' | 'REJECTED') {
+    this.expenseService.updateStatus(id, newStatus).subscribe({
+      next: (updated) => {
+        this.expenses.update((prev) =>
+          prev.map((e) => (e.id === id ? { ...e, status: updated.status } : e)),
+        );
+        this.toastService.show(
+          `Expense ${newStatus.toLowerCase()}!`,
+          'success',
+        );
+      },
+    });
   }
 
   openModal() {

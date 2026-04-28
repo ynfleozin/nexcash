@@ -4,7 +4,9 @@
       <h1 class="page-title">Corporate Expenses</h1>
       <p class="page-subtitle">Manage and track all company reimbursements.</p>
     </div>
-    <button class="btn-primary" (click)="openModal()">+ New Expense</button>
+    @if (role === "USER") {
+      <button class="btn-primary" (click)="openModal()">+ New Expense</button>
+    }
   </header>
 
   <section class="dashboard-grid">
@@ -58,15 +60,30 @@
             </td>
 
             <td class="text-right">
-              <button class="btn-ghost" style="margin-right: 1rem">
-                Review
-              </button>
-              <button
-                class="btn-ghost text-danger"
-                (click)="onDelete(expense.id)"
-              >
-                Delete
-              </button>
+              @if (role === "USER") {
+                <button
+                  class="btn-ghost text-danger"
+                  (click)="onDelete(expense.id)"
+                >
+                  Delete
+                </button>
+              }
+
+              @if (role === "MANAGER" && expense.status === "PENDING") {
+                <button
+                  class="btn-ghost text-success"
+                  (click)="updateStatus(expense.id, 'APPROVED')"
+                  style="margin-right: 1rem"
+                >
+                  Approve
+                </button>
+                <button
+                  class="btn-ghost text-danger"
+                  (click)="updateStatus(expense.id, 'REJECTED')"
+                >
+                  Reject
+                </button>
+              }
             </td>
           </tr>
         } @empty {
