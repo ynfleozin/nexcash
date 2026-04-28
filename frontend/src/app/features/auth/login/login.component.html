@@ -1,1 +1,23 @@
-<p>login works!</p>
+<div class="login-wrapper">
+  <div class="login-card">
+    <div class="brand-header">
+      <div class="logo-circle"></div>
+      <h1>NexCash</h1>
+      <p>Corporate Expense Management</p>
+    </div>
+
+    <div class="demo-notice">
+      <span>Demo Access</span>
+      <p>Select a profile below to enter the application.</p>
+    </div>
+
+    <div class="action-buttons">
+      <button class="btn-primary" (click)="simulateLogin('USER')">
+        Login as User
+      </button>
+      <button class="btn-secondary" (click)="simulateLogin('MANAGER')">
+        Login as Manager
+      </button>
+    </div>
+  </div>
+</div>
