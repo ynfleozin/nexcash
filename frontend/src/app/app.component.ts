@@ -14,8 +14,8 @@ export class AppComponent {
   authService = inject(AuthService);
   private router = inject(Router);
 
-  logout() {
-    this.authService.logout();
+  async logout() {
+    await this.authService.logout();
     this.router.navigate(['/']);
   }
 }

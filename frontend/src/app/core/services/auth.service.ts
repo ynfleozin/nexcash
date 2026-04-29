@@ -1,17 +1,42 @@
-import { Injectable, signal } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
+import { Auth, authState } from '@angular/fire/auth';
+import { signInWithEmailAndPassword, signOut } from 'firebase/auth';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
+  private auth = inject(Auth);
   currentUserRole = signal<'USER' | 'MANAGER' | null>(null);
 
-  login(role: 'USER' | 'MANAGER') {
-    this.currentUserRole.set(role);
+  getRoleByEmail(email: string): 'MANAGER' | 'USER' {
+    return email === 'manager@nexcash.com' ? 'MANAGER' : 'USER';
+  }
+
+  constructor() {
+    authState(this.auth).subscribe((user) => {
+      if (user && user.email) {
+        const role = this.getRoleByEmail(user.email);
+        this.currentUserRole.set(role);
+      } else {
+        this.currentUserRole.set(null);
+      }
+    });
+  }
+
+  async login(email: string, pass: string) {
+    const credential = await signInWithEmailAndPassword(this.auth, email, pass);
+
+    if (credential.user.email) {
+      const role = this.getRoleByEmail(credential.user.email);
+      this.currentUserRole.set(role);
+    }
+
+    return credential;
   }
 
   logout() {
-    this.currentUserRole.set(null);
+    return signOut(this.auth);
   }
 
   isAuthenticated(): boolean {
@@ -21,6 +46,4 @@ export class AuthService {
   hasRole(role: 'USER' | 'MANAGER'): boolean {
     return this.currentUserRole() === role;
   }
-
-  constructor() {}
 }
