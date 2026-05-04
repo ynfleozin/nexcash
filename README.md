@@ -1,4 +1,4 @@
-# NexCash 💸
+<img width="1417" height="993" alt="image" src="https://github.com/user-attachments/assets/cc660df8-df29-44b6-84d4-709f8da68d21" /># NexCash 💸
 
 > A full-stack expense management platform with role-based access control and end-to-end JWT security.
 
@@ -10,6 +10,13 @@
 [![Deploy](https://img.shields.io/badge/Deploy-Live-brightgreen?style=flat-square)](https://nexcash-phi.vercel.app/)
 
 **[Live Demo →](https://nexcash-phi.vercel.app/)**
+
+---
+
+## Preview
+
+![Login Screen](https://media.licdn.com/dms/image/v2/D4D22AQGGmZZuFyaDOg/feedshare-image-high-res/B4DZ31XVuZHgAU-/0/1777938029719?e=1779321600&v=beta&t=YJQz_Mb6vFxFj_TFyB-cGPBlwcJIEBM_ipODqje_WnU)
+![Manager Menu Screen](https://media.licdn.com/dms/image/v2/D4D22AQE9GEYv3e0fmg/feedshare-image-high-res/B4DZ31XVq9G4AU-/0/1777938029506?e=1779321600&v=beta&t=BqYlGm30tuNpsePotFYQmMlor4XjLM_sNpX47Gui6NU)
 
 ---
 
