@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Expense } from './expense.model';
+import { environment } from '../../environments/environments.prod';
 
 @Injectable({
   providedIn: 'root',
@@ -9,7 +10,7 @@ import { Expense } from './expense.model';
 export class ExpenseService {
   private http = inject(HttpClient);
 
-  private apiUrl = 'http://localhost:8080/api/expenses';
+  private apiUrl = `${environment.apiUrl}/expenses`;
 
   getExpenses(): Observable<Expense[]> {
     return this.http.get<Expense[]>(this.apiUrl);
@@ -23,7 +24,13 @@ export class ExpenseService {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 
-  updateStatus(id: string, status: 'APPROVED' | 'REJECTED'): Observable<Expense> {
-    return this.http.patch<Expense>(`${this.apiUrl}/${id}/status`, `"${status}"`)
+  updateStatus(
+    id: string,
+    status: 'APPROVED' | 'REJECTED',
+  ): Observable<Expense> {
+    return this.http.patch<Expense>(
+      `${this.apiUrl}/${id}/status`,
+      `"${status}"`,
+    );
   }
 }
