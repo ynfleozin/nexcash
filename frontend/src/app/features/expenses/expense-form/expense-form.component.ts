@@ -36,7 +36,7 @@ export class ExpenseFormComponent {
 
         price: Number(formDados.price),
 
-        date: formDados.date!,
+        date: formDados.date ? `${formDados.date}:00` : '',
 
         status: formDados.status as 'PENDING' | 'APPROVED' | 'REJECTED',
       };
@@ -47,7 +47,14 @@ export class ExpenseFormComponent {
           this.close.emit();
           this.toastService.show('Expense created successfully!', 'success');
         },
-        error: (err) => console.error('Error saving expense:', err),
+        error: (err) => {
+          console.error('HTTP Stats:', err.status);
+          console.error('Validation details:', err.error);
+          this.toastService.show(
+            'Error saving expense. Check the fields.',
+            'error',
+          );
+        },
       });
     }
   }
