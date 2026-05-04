@@ -34,7 +34,7 @@ public class Expense {
     @Positive(message = "Price must be greater than zero")
     private BigDecimal price;
 
-    @PastOrPresent(message = "Date cannot be in the future")
+    @NotNull(message = "Date cannot be null")
     private LocalDateTime date;
 
     @NotNull(message = "Status cannot be null")
