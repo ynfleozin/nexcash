@@ -24,7 +24,6 @@
       padding: 0.5rem 1rem;
       border-radius: 6px;
       transition: all 0.2s;
-
     }
 
     a:hover {
@@ -41,4 +40,25 @@
       }
     }
   }
+}
+
+.app-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: var(--bg-dark);
+}
+
+.loading-spinner {
+  width: 36px;
+  height: 36px;
+  border: 3px solid var(--border-color);
+  border-top-color: var(--primary-purple);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
 }

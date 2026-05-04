@@ -9,6 +9,8 @@ export class AuthService {
   private auth = inject(Auth);
   currentUserRole = signal<'USER' | 'MANAGER' | null>(null);
 
+  isLoading = signal<boolean>(true);
+
   getRoleByEmail(email: string): 'MANAGER' | 'USER' {
     return email === 'manager@nexcash.com' ? 'MANAGER' : 'USER';
   }
@@ -21,6 +23,8 @@ export class AuthService {
       } else {
         this.currentUserRole.set(null);
       }
+
+      this.isLoading.set(false);
     });
   }
 
