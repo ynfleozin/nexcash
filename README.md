@@ -1,4 +1,4 @@
-<img width="1417" height="993" alt="image" src="https://github.com/user-attachments/assets/cc660df8-df29-44b6-84d4-709f8da68d21" /># NexCash 💸
+# NexCash 💸
 
 > A full-stack expense management platform with role-based access control and end-to-end JWT security.
 
