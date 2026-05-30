@@ -2,6 +2,7 @@ package com.leonardoalvarenga.nexcash.service;
 
 import com.leonardoalvarenga.nexcash.domain.Expense;
 import com.leonardoalvarenga.nexcash.domain.enums.ExpenseStatus;
+import com.leonardoalvarenga.nexcash.dto.CreateExpenseDTO;
 import com.leonardoalvarenga.nexcash.dto.ExpenseResponseDTO;
 import com.leonardoalvarenga.nexcash.repository.ExpenseRepository;
 import lombok.RequiredArgsConstructor;
@@ -15,8 +16,20 @@ import java.util.UUID;
 public class ExpenseService {
     private final ExpenseRepository repository;
 
-    public Expense createExpense(Expense expense) {
-        return repository.save(expense);
+    public ExpenseResponseDTO createExpense(CreateExpenseDTO dto) {
+        Expense entity = new Expense();
+
+        entity.setPrice(dto.price());
+        entity.setDescription(dto.description());
+
+        Expense savedEntity = repository.save(entity);
+
+        return new ExpenseResponseDTO(
+                savedEntity.getId(),
+                savedEntity.getDescription(),
+                savedEntity.getPrice(),
+                savedEntity.getStatus()
+        );
     }
 
     public List<ExpenseResponseDTO> findAll() {

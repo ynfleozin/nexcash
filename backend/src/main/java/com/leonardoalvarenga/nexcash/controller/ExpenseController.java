@@ -2,6 +2,7 @@ package com.leonardoalvarenga.nexcash.controller;
 
 import com.leonardoalvarenga.nexcash.domain.Expense;
 import com.leonardoalvarenga.nexcash.domain.enums.ExpenseStatus;
+import com.leonardoalvarenga.nexcash.dto.CreateExpenseDTO;
 import com.leonardoalvarenga.nexcash.dto.ExpenseResponseDTO;
 import com.leonardoalvarenga.nexcash.service.ExpenseService;
 import jakarta.validation.Valid;
@@ -20,9 +21,9 @@ public class ExpenseController {
     private final ExpenseService service;
 
     @PostMapping
-    public ResponseEntity<Expense> create(@Valid @RequestBody Expense expense) {
-        Expense savedExpense = service.createExpense(expense);
-        return ResponseEntity.status(HttpStatus.CREATED).body(savedExpense);
+    public ResponseEntity<ExpenseResponseDTO> create(@Valid @RequestBody CreateExpenseDTO dto) {
+        ExpenseResponseDTO response = service.createExpense(dto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
     @GetMapping
