@@ -21,6 +21,8 @@ public class ExpenseService {
 
         entity.setPrice(dto.price());
         entity.setDescription(dto.description());
+        entity.setDate(dto.date());
+        entity.setStatus(ExpenseStatus.PENDING);
 
         Expense savedEntity = repository.save(entity);
 
@@ -28,6 +30,7 @@ public class ExpenseService {
                 savedEntity.getId(),
                 savedEntity.getDescription(),
                 savedEntity.getPrice(),
+                savedEntity.getDate(),
                 savedEntity.getStatus()
         );
     }
@@ -39,6 +42,7 @@ public class ExpenseService {
                         expense.getId(),
                         expense.getDescription(),
                         expense.getPrice(),
+                        expense.getDate(),
                         expense.getStatus()
                 ))
                 .toList();
