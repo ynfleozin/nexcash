@@ -13,6 +13,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -36,7 +37,8 @@ public class ExpenseServiceTest {
 
         CreateExpenseDTO dto = new CreateExpenseDTO(
                 "Dinner",
-                new BigDecimal("10.30")
+                new BigDecimal("10.30"),
+                LocalDateTime.now()
         );
 
         Expense savedExpense = new Expense();
