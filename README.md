@@ -15,8 +15,8 @@
 
 ## Preview
 
-![Login Screen](https://media.licdn.com/dms/image/v2/D4D22AQGGmZZuFyaDOg/feedshare-image-high-res/B4DZ31XVuZHgAU-/0/1777938029719?e=1779321600&v=beta&t=YJQz_Mb6vFxFj_TFyB-cGPBlwcJIEBM_ipODqje_WnU)
-![Manager Menu Screen](https://media.licdn.com/dms/image/v2/D4D22AQE9GEYv3e0fmg/feedshare-image-high-res/B4DZ31XVq9G4AU-/0/1777938029506?e=1779321600&v=beta&t=BqYlGm30tuNpsePotFYQmMlor4XjLM_sNpX47Gui6NU)
+![Login Screen](https://ibb.co/XxtMFSdy)
+![Manager Menu Screen](https://ibb.co/N2tfQbng)
 
 ---
 
