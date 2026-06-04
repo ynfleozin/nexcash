@@ -4,7 +4,7 @@
 
 [![Angular](https://img.shields.io/badge/Angular-18-DD0031?style=flat-square&logo=angular)](https://angular.io/)
 [![Spring Boot](https://img.shields.io/badge/Spring_Boot-4.0-6DB33F?style=flat-square&logo=springboot)](https://spring.io/projects/spring-boot)
-[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-4169E1?style=flat-square&logo=postgresql&logoColor=white)](https://www.postgresql.org/)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-18-4169E1?style=flat-square&logo=postgresql&logoColor=white)](https://www.postgresql.org/)
 [![Firebase](https://img.shields.io/badge/Firebase_Auth-Google_OAuth-FFCA28?style=flat-square&logo=firebase&logoColor=black)](https://firebase.google.com/)
 [![Docker](https://img.shields.io/badge/Docker-Containerized-2496ED?style=flat-square&logo=docker&logoColor=white)](https://www.docker.com/)
 [![Deploy](https://img.shields.io/badge/Deploy-Live-brightgreen?style=flat-square)](https://nexcash-phi.vercel.app/)
@@ -44,7 +44,7 @@ NexCash is a corporate expense management system where employees submit expenses
           ▼                                                    ▼
 ┌─────────────────────┐                           ┌──────────────────────────┐
 │   Firebase Auth     │ ──── JWKS validation ───▶ │   PostgreSQL             │
-│   (Google)          │                           │   (Render)               │
+│   (Google)          │                           │   (Neon)                 │
 └─────────────────────┘                           └──────────────────────────┘
 ```
 
@@ -65,7 +65,7 @@ NexCash is a corporate expense management system where employees submit expenses
 | Spring Security + OAuth2 Resource Server | JWT validation and route protection |
 | Spring Data JPA + Hibernate | ORM and database abstraction |
 | Flyway | Database schema versioning and migrations |
-| PostgreSQL | Relational database |
+| PostgreSQL (Neon) | Relational database (Serverless) |
 | Lombok | Boilerplate reduction |
 | Bean Validation (Jakarta) | Request payload validation |
 | Docker (multi-stage build) | Containerization for consistent environments |
@@ -87,7 +87,8 @@ NexCash is a corporate expense management system where employees submit expenses
 |---|---|
 | Docker | Backend containerization via multi-stage build |
 | Vercel | Frontend hosting with SPA routing |
-| Render | Backend and PostgreSQL hosting |
+| Render | Backend REST API hosting |
+| Neon | Serverless PostgreSQL hosting |
 | GitHub | Source control and CI/CD trigger |
 
 ---
