@@ -15,8 +15,8 @@
 
 ## Preview
 
-![Login Screen](https://ibb.co/XxtMFSdy)
-![Manager Menu Screen](https://ibb.co/N2tfQbng)
+![Login Screen](https://i.ibb.co/m54gh6Yv/1777938029719.jpg)
+![Manager Menu Screen](https://i.ibb.co/23WRmHY0/1777938029506.jpg)
 
 ---
 
