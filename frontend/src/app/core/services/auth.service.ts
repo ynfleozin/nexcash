@@ -30,12 +30,6 @@ export class AuthService {
 
   async login(email: string, pass: string) {
     const credential = await signInWithEmailAndPassword(this.auth, email, pass);
-
-    if (credential.user.email) {
-      const role = this.getRoleByEmail(credential.user.email);
-      this.currentUserRole.set(role);
-    }
-
     return credential;
   }
 
