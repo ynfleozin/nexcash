@@ -22,6 +22,7 @@
 
   .brand-header {
     margin-bottom: 2.5rem;
+    text-align: center;
 
     .logo-circle {
       width: 48px;
@@ -29,10 +30,27 @@
       margin: 0 auto 1rem;
       border-radius: 50%;
 
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
       background: linear-gradient(135deg,
           var(--primary-purple),
           var(--primary-hover));
+
       box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+
+      color: white;
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: -1px;
+
+      user-select: none;
+
+      span {
+        transform: skewX(-10deg);
+        display: block;
+      }
     }
 
     h1 {
