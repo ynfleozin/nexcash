@@ -6,23 +6,8 @@ import { AuthService } from '../../core/services/auth.service';
   selector: 'app-main-layout',
   standalone: true,
   imports: [RouterOutlet, RouterLink],
-  template: `
-    <nav class="top-nav">
-      <div class="nav-brand">NexCash</div>
-      <div class="nav-links">
-        @if (authService.currentUserRole() === "USER") {
-          <a routerLink="/user">User Portal</a>
-        }
-        @if (authService.currentUserRole() === "MANAGER") {
-          <a routerLink="/manager">Manager Dashboard</a>
-        }
-        <a href="javascript:void(0)" (click)="logout()" class="logout-link">Logout</a>
-      </div>
-    </nav>
-    <main>
-      <router-outlet></router-outlet>
-    </main>
-  `,
+  templateUrl: './main-layout.component.html',
+  styleUrl: './main-layout.component.scss',
 })
 export class MainLayoutComponent {
   authService = inject(AuthService);
