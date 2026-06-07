@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { ExpenseListComponent } from './features/expenses/expense-list/expense-list.component';
 import { authGuard } from './core/guards/auth.guard';
 import { LoginComponent } from './features/auth/login/login.component';
+import { MainLayoutComponent } from './shared/main-layout/main-layout.component';
 
 export const routes: Routes = [
   {
@@ -9,15 +10,21 @@ export const routes: Routes = [
     component: LoginComponent,
   },
   {
-    path: 'user',
-    component: ExpenseListComponent,
-    canActivate: [authGuard],
-    data: { role: 'USER' },
-  },
-  {
-    path: 'manager',
-    component: ExpenseListComponent,
-    canActivate: [authGuard],
-    data: { role: 'MANAGER' },
+    path: '',
+    component: MainLayoutComponent,
+    children: [
+      {
+        path: 'user',
+        component: ExpenseListComponent,
+        canActivate: [authGuard],
+        data: { role: 'USER' },
+      },
+      {
+        path: 'manager',
+        component: ExpenseListComponent,
+        canActivate: [authGuard],
+        data: { role: 'MANAGER' },
+      },
+    ],
   },
 ];
