@@ -34,9 +34,14 @@
 }
 
 .brand {
+  display: inline-flex;
+  align-items: center;
+  max-width: 100%;
+
   img {
-    width: 250px;
+    width: min(260px, 100%);
     height: auto;
+    display: block;
   }
 }
 
@@ -204,8 +209,8 @@
 
 @media (max-width: 960px) {
   .topbar {
-    align-items: flex-start;
     flex-direction: column;
+    align-items: center;
   }
 
   .hero-grid {
@@ -227,5 +232,34 @@
     padding: 0.75rem;
     border-radius: 20px;
     min-height: calc(100vh - 1rem);
+  }
+
+  .topbar {
+    padding-bottom: 1.25rem;
+  }
+
+  .brand {
+    justify-content: center;
+    width: 100%;
+
+    img {
+      width: min(190px, 100%);
+    }
+  }
+
+  .topbar-link {
+    width: 100%;
+  }
+
+  .hero-copy {
+    padding: 1.25rem 0.5rem 1rem;
+  }
+
+  .hero-copy h1 {
+    font-size: clamp(2.15rem, 12vw, 3rem);
+  }
+
+  .point-list {
+    max-width: 100%;
   }
 }

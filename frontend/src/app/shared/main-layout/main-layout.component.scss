@@ -12,9 +12,14 @@
   backdrop-filter: blur(10px);
 
   .nav-brand {
-    img{
-      width: 250px;
+    display: inline-flex;
+    align-items: center;
+    max-width: 100%;
+
+    img {
+      width: min(250px, 100%);
       height: auto;
+      display: block;
     }
   }
 
@@ -55,6 +60,36 @@
         color: var(--status-rejected);
         background-color: rgba(239, 68, 68, 0.05);
       }
+    }
+  }
+}
+
+@media (max-width: 640px) {
+  .top-nav {
+    margin: 0.5rem 0.5rem 0;
+    padding: 0.9rem 1rem;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .nav-brand {
+    justify-content: center;
+    width: 100%;
+
+    img {
+      width: min(180px, 100%);
+    }
+  }
+
+  .nav-links {
+    width: 100%;
+    justify-content: center;
+
+    a,
+    .logout-link {
+      flex: 1 1 0;
+      justify-content: center;
+      min-width: 0;
     }
   }
 }
