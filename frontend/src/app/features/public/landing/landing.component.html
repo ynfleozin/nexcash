@@ -1,0 +1,49 @@
+<main class="landing-shell">
+  <section class="hero-card">
+    <header class="topbar">
+      <a class="brand" routerLink="/">
+        <img src="/logoNexCash.webp" alt="NexCash">
+        <!-- <span class="brand-mark">N</span>
+        <div>
+          <strong>NexCash</strong>
+          <span>Corporate Expense Management</span>
+        </div> -->
+      </a>
+
+      <a class="topbar-link" routerLink="/login">Login</a>
+    </header>
+
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">Public entry</p>
+        <h1>Corporate expense management.</h1>
+        <p class="hero-text">Manage and track all company reimbursements.</p>
+
+        <div class="hero-actions">
+          <a class="btn-primary" routerLink="/login">Go to login</a>
+        </div>
+
+        <div class="point-list">
+          @for (point of productPoints; track point) {
+            <span class="point-pill">{{ point }}</span>
+          }
+        </div>
+      </div>
+
+      <aside class="hero-panel">
+        <div class="panel-card">
+          <span class="panel-kicker">Product snapshot</span>
+
+          <div class="snapshot-list">
+            @for (item of productSnapshot; track item.title) {
+              <div class="snapshot-item">
+                <strong>{{ item.title }}</strong>
+                <p>{{ item.note }}</p>
+              </div>
+            }
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+</main>

@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { AuthService } from '../../core/services/auth.service';
 
@@ -12,6 +12,14 @@ import { AuthService } from '../../core/services/auth.service';
 export class MainLayoutComponent {
   authService = inject(AuthService);
   private router = inject(Router);
+  readonly dashboardLink = computed(() =>
+    this.authService.currentUserRole() === 'MANAGER' ? '/manager' : '/user',
+  );
+  readonly dashboardLabel = computed(() =>
+    this.authService.currentUserRole() === 'MANAGER'
+      ? 'Manager Dashboard'
+      : 'User Portal',
+  );
 
   async logout() {
     await this.authService.logout();

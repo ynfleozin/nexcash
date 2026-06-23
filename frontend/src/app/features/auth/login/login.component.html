@@ -1,30 +1,60 @@
-<div class="login-wrapper">
-  <div class="login-card">
-    <div class="brand-header">
-      <div class="logo-circle">
-        <span>N</span>
-      </div>
-      <h1>NexCash</h1>
-      <p>Corporate Expense Management</p>
+<main class="login-shell">
+  <section class="login-card">
+    <a class="brand" routerLink="/">
+      <img src="/logoNexCash.webp" alt="NexCash" />
+    </a>
+
+    <h1>Sign in to access the workspace.</h1>
+    <p class="lead">
+      Use the demo credentials below to enter the User Portal or Manager
+      Dashboard.
+    </p>
+
+    <div class="demo-buttons">
+      <button type="button" class="btn-ghost" (click)="fillCredentials('USER')">
+        User
+      </button>
+      <button
+        type="button"
+        class="btn-ghost"
+        (click)="fillCredentials('MANAGER')"
+      >
+        Manager
+      </button>
     </div>
 
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
       <div class="form-group">
-        <label>Email</label>
+        <label for="email">Email</label>
         <input
+          id="email"
           type="email"
           formControlName="email"
           placeholder="name@company.com"
         />
+        @if (
+          loginForm.controls.email.touched && loginForm.controls.email.errors
+        ) {
+          <small class="field-error">Enter a valid email address.</small>
+        }
       </div>
 
       <div class="form-group">
-        <label>Password</label>
+        <label for="password">Password</label>
         <input
+          id="password"
           type="password"
           formControlName="password"
           placeholder="••••••••"
         />
+        @if (
+          loginForm.controls.password.touched &&
+          loginForm.controls.password.errors
+        ) {
+          <small class="field-error"
+            >Password must have at least 6 characters.</small
+          >
+        }
       </div>
 
       <button
@@ -35,25 +65,5 @@
         {{ isLoading ? "Authenticating..." : "Sign In" }}
       </button>
     </form>
-
-    <div class="demo-notice">
-      <p>Click to auto-fill credentials</p>
-      <div class="demo-buttons">
-        <button
-          type="button"
-          class="btn-ghost"
-          (click)="fillCredentials('USER')"
-        >
-          User
-        </button>
-        <button
-          type="button"
-          class="btn-ghost"
-          (click)="fillCredentials('MANAGER')"
-        >
-          Manager
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
+  </section>
+</main>

@@ -1,13 +1,12 @@
 <nav class="top-nav">
-  <div class="nav-brand">NexCash</div>
+  <a class="nav-brand" routerLink="/">
+    <img src="/logoNexCash.webp" alt="NexCash" />
+  </a>
   <div class="nav-links">
-    @if (authService.currentUserRole() === "USER") {
-      <a routerLink="/user">User Portal</a>
+    @if (authService.currentUserRole()) {
+      <a [routerLink]="dashboardLink()">{{ dashboardLabel() }}</a>
     }
-    @if (authService.currentUserRole() === "MANAGER") {
-      <a routerLink="/manager">Manager Dashboard</a>
-    }
-    <a href="javascript:void(0)" (click)="logout()" class="logout-link">Logout</a>
+    <button type="button" (click)="logout()" class="logout-link">Logout</button>
   </div>
 </nav>
 
